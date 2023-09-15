@@ -3,9 +3,8 @@ import { Provider } from "react-redux";
 import { store } from "./utils/store";
 import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Header from "./components/Header";
-import SideBar from "./components/SideBar";
 import Content from "./components/Content";
-import WatchPage from "./components/watchPage";
+import WatchPage from "./components/WatchPage";
 import Body from "./components/Body";
 
 function App() {
