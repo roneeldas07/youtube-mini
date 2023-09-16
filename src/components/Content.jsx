@@ -2,29 +2,34 @@ import React, { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
 import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import { Link } from "react-router-dom";
-let card = Array(10).fill(1);
+import { useDispatch, useSelector } from "react-redux";
+import { setVideos } from "../redux_slices/videosListSlice";
 
 const Content = () => {
-  const [videoData,setVideoData] = useState({})
-  useEffect(()=>{
-    getVideosList().then(response => {
-      setVideoData(response)
-    })
-  },[])
+  const dispatch = useDispatch();
+  const videoData = useSelector((state) => state.videos_list.videos);
+  useEffect(() => {
+    getVideosList().then((response) => {
+      dispatch(setVideos(response));
+    });
+  }, []);
 
   const getVideosList = async () => {
-    let response = await fetch(YOUTUBE_VIDEOS_API)
-    let jsonData = await response.json()
-    return jsonData
-  }
+    let response = await fetch(YOUTUBE_VIDEOS_API);
+    let jsonData = await response.json();
+    return jsonData;
+  };
 
   return (
     <div className="flex flex-wrap justify-start p-5 grow h-[90vh] overflow-y-auto">
-      {videoData?.items?.length > 0 && videoData.items.map((item, index) => (
-        <div key={index} className="w-1/4">
-          <Link to={'/watch?vid='+item.id}><VideoCard snippet={item.snippet} statistics={item.statistics}/></Link>
-        </div>
-      ))}
+      {videoData?.items?.length > 0 &&
+        videoData.items.map((item, index) => (
+          <div key={index} className="w-1/4">
+            <Link to={"/watch?vid=" + item.id}>
+              <VideoCard snippet={item.snippet} statistics={item.statistics} />
+            </Link>
+          </div>
+        ))}
     </div>
   );
 };
