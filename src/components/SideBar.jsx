@@ -52,7 +52,7 @@ const SideBar = () => {
     );
   } else {
     return (
-      <div className="w-24 h-[90vh] overflow-y-auto flex flex-col justify-start items-center border-r-2 shrink-0">
+      <div className="w-18 sm:w-24 h-[90vh] overflow-y-auto flex flex-col justify-start items-center border-r-2 shrink-0">
         <ul className="mt-3 flex flex-col gap-7">
           <Button title="Home" src={home_side} vertical={true} />
           <Button title="Shorts" src={shorts_side} vertical={true} />

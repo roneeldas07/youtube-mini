@@ -30,7 +30,7 @@ const SearchBar = () => {
     dispatch(setVideos(jsonData));
   };
   return (
-    <div className="flex items-center relative">
+    <div className="flex items-center relative w-full justify-center">
       <input
         className="border-solid border-2 border-gray-900 rounded-l-2xl py-1 px-5"
         onChange={(e) => {
@@ -62,7 +62,7 @@ const SearchBar = () => {
           setDisplaySuggestions(false);
         }}
       >
-        Search
+        🔍
       </button>
     </div>
   );

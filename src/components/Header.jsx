@@ -8,9 +8,9 @@ import SearchBar from "./SearchBar";
 const Header = () => {
   const dispatch = useDispatch();
   return (
-    <div className="flex justify-between items-center p-3 bg-slate-100 shadow-md">
-      <div className="flex items-center gap-3">
-        <div className="pl-4 pr-8 h-10">
+    <div className="flex justify-between items-center p-3 bg-slate-100 shadow-md gap-2">
+      <div className="flex w-full items-center gap-3">
+        <div className="hidden sm:block pl-4 pr-8 h-10">
           <img
             className="p-2 cursor-pointer hover:bg-slate-200 hover:rounded-3xl"
             src={burger_menu}
@@ -24,7 +24,7 @@ const Header = () => {
         </a>
       </div>
       <SearchBar />
-      <div className="flex items-center">
+      <div className="flex w-full items-center justify-end">
         <img
           className="h-10 p-2 cursor-pointer hover:bg-slate-200 hover:rounded-3xl"
           src={user_acc}
