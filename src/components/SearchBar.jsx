@@ -9,10 +9,15 @@ const SearchBar = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [displaySuggestions, setDisplaySuggestions] = useState(false);
   useEffect(() => {
-    getSearchSuggestion(searchText).then((response) => {
-      setSuggestions(response[1]);
-      setDisplaySuggestions(true);
-    });
+    let debouncedSuggestions = setTimeout(() => {
+      getSearchSuggestion(searchText).then((response) => {
+        setSuggestions(response[1]);
+        setDisplaySuggestions(true);
+      });
+    }, 200);
+    return () => {
+      clearTimeout(debouncedSuggestions);
+    };
   }, [searchText]);
   const getSearchSuggestion = async () => {
     let response = await fetch(
@@ -36,6 +41,12 @@ const SearchBar = () => {
         onChange={(e) => {
           setSearchText(e.target.value);
         }}
+        onFocus={() => {
+          setDisplaySuggestions(true);
+        }}
+        onBlur={() => {
+          setDisplaySuggestions(false);
+        }}
         value={searchText}
       />
       {displaySuggestions && (
@@ -50,7 +61,7 @@ const SearchBar = () => {
                 setSearchText(item);
               }}
             >
-              {item}
+              🔍 {item}
             </div>
           ))}
         </div>
