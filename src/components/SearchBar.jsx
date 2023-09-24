@@ -32,7 +32,7 @@ const SearchBar = () => {
   return (
     <div className="flex items-center relative w-full justify-center">
       <input
-        className="border-solid border-2 border-gray-900 rounded-l-2xl py-1 px-5"
+        className="border-solid border-2 border-gray-900 rounded-l-2xl py-1 px-5 w-4/6"
         onChange={(e) => {
           setSearchText(e.target.value);
         }}
@@ -41,7 +41,7 @@ const SearchBar = () => {
       {displaySuggestions && (
         <div
           id="suggestions"
-          className={`absolute border-solid top-9 left-4 bg-white`}
+          className={`absolute border-solid top-9 left-auto w-4/6 bg-white -translate-x-6`}
         >
           {suggestions.map((item) => (
             <div

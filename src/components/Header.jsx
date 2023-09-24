@@ -9,7 +9,7 @@ const Header = () => {
   const dispatch = useDispatch();
   return (
     <div className="flex justify-between items-center p-3 bg-slate-100 shadow-md gap-2">
-      <div className="flex w-full items-center gap-3">
+      <div className="flex w-1/4 items-center gap-3">
         <div className="hidden sm:block pl-4 pr-8 h-10">
           <img
             className="p-2 cursor-pointer hover:bg-slate-200 hover:rounded-3xl"
@@ -24,7 +24,7 @@ const Header = () => {
         </a>
       </div>
       <SearchBar />
-      <div className="flex w-full items-center justify-end">
+      <div className="flex w-1/4 items-center justify-end">
         <img
           className="h-10 p-2 cursor-pointer hover:bg-slate-200 hover:rounded-3xl"
           src={user_acc}
