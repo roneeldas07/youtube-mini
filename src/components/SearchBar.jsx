@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setVideos } from "../redux_slices/videosListSlice";
+import { addToCache } from "../redux_slices/searchCacheSlice";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [displaySuggestions, setDisplaySuggestions] = useState(false);
+  let cached_searches = useSelector((store) => store.search_cache_slice);
   useEffect(() => {
     let debouncedSuggestions = setTimeout(() => {
-      getSearchSuggestion(searchText).then((response) => {
-        setSuggestions(response[1]);
+      if (cached_searches[searchText]?.length > 0) {
+        setSuggestions(cached_searches[searchText]);
         setDisplaySuggestions(true);
-      });
+      } else {
+        getSearchSuggestion(searchText).then((response) => {
+          searchText && dispatch(addToCache({ [searchText]: response[1] }));
+          setSuggestions(response[1]);
+          setDisplaySuggestions(true);
+        });
+      }
     }, 200);
     return () => {
       clearTimeout(debouncedSuggestions);
@@ -52,7 +60,7 @@ const SearchBar = () => {
       {displaySuggestions && (
         <div
           id="suggestions"
-          className={`absolute border-solid top-9 left-auto w-4/6 bg-white -translate-x-6`}
+          className={`absolute border-solid top-9 left-auto w-4/6 bg-white -translate-x-6 rounded-sm`}
         >
           {suggestions.map((item) => (
             <div
