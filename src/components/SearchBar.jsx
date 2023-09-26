@@ -9,7 +9,7 @@ const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [displaySuggestions, setDisplaySuggestions] = useState(false);
-  let cached_searches = useSelector((store) => store.search_cache_slice);
+  let cached_searches = useSelector((store) => store.search_cache);
   useEffect(() => {
     let debouncedSuggestions = setTimeout(() => {
       if (cached_searches[searchText]?.length > 0) {

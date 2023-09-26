@@ -5,11 +5,21 @@ const Comments = (props) => {
   const renderComments = (comments) => {
     return comments.map((comment) => {
       if (comment?.replies?.length == 0) {
-        return <Comment comment={comment.comment} author={comment.author} />;
+        return (
+          <Comment
+            key={comment.id}
+            comment={comment.comment}
+            author={comment.author}
+          />
+        );
       } else {
         return (
           <>
-            <Comment comment={comment.comment} author={comment.author} />
+            <Comment
+              key={comment.id}
+              comment={comment.comment}
+              author={comment.author}
+            />
             <div className="pl-5 border-l-2 border-solid border-gray-700">
               {renderComments(comment.replies)}
             </div>
@@ -42,64 +52,86 @@ export default Comments;
 
 var static_comment_data = [
   {
-    author: "RKD",
+    id: "1",
+    author: "Cristiano Ronaldo",
     comment: "Awesome project, bro!",
     replies: [
       {
-        author: "RKD",
-        comment: "Awesome project, bro!",
+        id: "1a",
+        author: "Rajneesh",
+        comment: "Thank You, my friend",
         replies: [],
       },
       {
-        author: "RKD",
-        comment: "Awesome project, bro!",
+        id: "1b",
+        author: "Wayne Rooney",
+        comment: "Cristiano, you can say more and better things than that",
         replies: [
           {
-            author: "RKD",
-            comment: "Awesome project, bro!",
+            id: "1b1",
+            author: "Marcus Rashford",
+            comment: "Lol Wazza, I'm coming for your United Goalscoring record",
             replies: [],
           },
           {
-            author: "RKD",
-            comment: "Awesome project, bro!",
+            id: "1b2",
+            author: "Rajneesh",
+            comment: "Haha, loving this banter",
             replies: [],
           },
           {
-            author: "RKD",
-            comment: "Awesome project, bro!",
+            id: "1b3",
+            author: "Cristiano Ronaldo",
+            comment:
+              "Shut up! I'm still a player and you are already a manager.",
             replies: [],
           },
         ],
       },
       {
-        author: "RKD",
-        comment: "Awesome project, bro!",
+        id: "1c",
+        author: "Sadio Mane",
+        comment: "Bro!! Come for practice and teach me your new celebration",
         replies: [],
       },
     ],
   },
   {
-    author: "RKD",
-    comment: "Awesome project, bro!",
+    id: "2",
+    author: "Nezuko Kamado",
+    comment: "すごいね",
     replies: [],
   },
   {
-    author: "RKD",
-    comment: "Awesome project, bro!",
+    id: "3",
+    author: "Monkey D. Luffy",
+    comment: "hahaha!! What is this?!?! Hahahahaha",
     replies: [
       {
-        author: "RKD",
-        comment: "Awesome project, bro!",
+        id: "3a",
+        author: "Nami",
+        comment:
+          "Oi Luffy!! Get back to the ship, we need to leave for the Grand Line!!",
+        replies: [
+          {
+            id: "3a1",
+            author: "Sanji",
+            comment:
+              "Nami chan!! I have prepared dessert for you. Will bring it up to you in a minute",
+            replies: [],
+          },
+        ],
+      },
+      {
+        id: "3b",
+        author: "Zoro",
+        comment: "This Idiot!! Why did I have to join THIS GUY'S crew?!?!",
         replies: [],
       },
       {
-        author: "RKD",
-        comment: "Awesome project, bro!",
-        replies: [],
-      },
-      {
-        author: "RKD",
-        comment: "Awesome project, bro!",
+        id: "3c",
+        author: "Usopp",
+        comment: "This is my project!! hahahaha!!",
         replies: [],
       },
     ],
