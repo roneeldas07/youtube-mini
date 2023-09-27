@@ -11,8 +11,11 @@ const live_chat_slice = createSlice({
             state.chats.splice(LIVE_CHAT_OFFSET,1)
             state.chats.unshift(action.payload)
         },
+        clearChat: (state) => {
+            state.chats = []
+        }
     }
 })
 
 export default live_chat_slice.reducer
-export const { addToChat } = live_chat_slice.actions
+export const { addToChat,clearChat } = live_chat_slice.actions

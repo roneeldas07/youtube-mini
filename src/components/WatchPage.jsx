@@ -21,7 +21,7 @@ const WatchPage = () => {
           height={height}
           src={"https://www.youtube.com/embed/" + searchParams.get("vid")}
         />
-        <div className="flex-1 h-[250px] sm:h-[600px] overflow-y-auto bg-slate-100 w-full rounded-lg p-2">
+        <div className="flex-1 h-[250px] sm:h-[600px] overflow-y-auto bg-slate-100 w-full rounded-lg pl-2 py-2">
           <LiveChat />
         </div>
       </div>

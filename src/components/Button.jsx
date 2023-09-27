@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 
 const Button = (props) => {
   return (
-    <Link to={"/"}>
+    <Link
+      className={`${
+        props.disabled ? "pointer-events-none" : ""
+      } cursor-default`}
+      to={"/"}
+    >
       <li
-        className={`p-2 cursor-pointer rounded-md hover:bg-slate-300 ${
-          props.vertical ? "" : "pl-7"
-        }`}
+        className={`p-2 ${
+          props.disabled ? "opacity-30" : "cursor-pointer hover:bg-slate-300"
+        } rounded-md ${props.vertical ? "" : "pl-7"}`}
       >
         <div
           className={`flex ${

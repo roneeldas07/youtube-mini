@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToChat } from "../redux_slices/liveChatSlice";
+import { addToChat, clearChat } from "../redux_slices/liveChatSlice";
 import { generateRandomName, generateRandomString } from "../utils/utils";
 import face from "./../assets/face.svg";
 
@@ -20,6 +20,7 @@ const LiveChat = () => {
     }, 3000);
     return () => {
       clearInterval(chat_entry_interval);
+      dispatch(clearChat());
     };
   }, []);
   const sendMessage = () => {
@@ -33,17 +34,17 @@ const LiveChat = () => {
     setChatText("");
   };
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-[250px] sm:h-full">
       <div className="font-bold text-lg">Live Chat</div>
-      <div className="flex flex-col flex-1 h-[250px]">
-        <div className="flex flex-col-reverse overflow-y-auto h-[250px]">
+      <div className="flex flex-col flex-1 overflow-y-auto">
+        <div className="flex flex-col-reverse overflow-y-auto flex-1">
           {live_chats.map((item) => (
             <Chat key={item.id} author={item.author} message={item.message} />
           ))}
         </div>
       </div>
       <hr className="border-gray-800" />
-      <div className="flex gap-1 mt-2">
+      <div className="flex gap-1 my-2">
         <input
           className="border-solid border-2 border-gray-900 rounded-2xl py-1 px-5 flex-1 w-full"
           onChange={(e) => {

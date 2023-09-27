@@ -11,43 +11,21 @@ const SideBar = () => {
 
   if (burgerState) {
     return (
-      <div className="w-56 h-[90vh] overflow-y-auto border-r-2 shrink-0">
+      <div className="w-56 h-[90vh] overflow-y-auto border-r-2 shrink-0 flex flex-col justify-between">
         <ul className="p-2 mt-3">
           <Button title="Home" src={home_side} />
-          <Button title="Shorts" src={shorts_side} />
-          <Button title="Subscriptions" src={subscriptions_side} />
-          <Button title="Music" src={music_side} />
+          <Button title="Shorts" src={shorts_side} disabled={true} />
+          <Button
+            title="Subscriptions"
+            src={subscriptions_side}
+            disabled={true}
+          />
+          <Button title="Music" src={music_side} disabled={true} />
         </ul>
-        <hr />
-        <ul className="p-2">
-          <Button title="Home" src={home_side} />
-          <Button title="Shorts" src={shorts_side} />
-          <Button title="Subscriptions" src={subscriptions_side} />
-          <Button title="Music" src={music_side} />
-        </ul>
-        <hr />
-        <ul className="p-2">
-          <Button title="Home" src={home_side} />
-          <Button title="Shorts" src={shorts_side} />
-          <Button title="Subscriptions" src={subscriptions_side} />
-          <Button title="Music" src={music_side} />
-        </ul>
-        <hr />
-        <ul className="p-2">
-          <Button title="Home" src={home_side} />
-          <Button title="Shorts" src={shorts_side} />
-          <Button title="Subscriptions" src={subscriptions_side} />
-          <Button title="Music" src={music_side} />
-        </ul>
-        <hr />
-        <ul className="p-2">
-          <Button title="Home" src={home_side} />
-          <Button title="Shorts" src={shorts_side} />
-          <Button title="Subscriptions" src={subscriptions_side} />
-          <Button title="Music" src={music_side} />
-        </ul>
-        <hr />
-        <div>© 2023 Google LLC</div>
+
+        <div>
+          <hr />© 2023 Google LLC
+        </div>
       </div>
     );
   } else {
@@ -55,13 +33,24 @@ const SideBar = () => {
       <div className="w-18 sm:w-24 h-[90vh] overflow-y-auto flex flex-col justify-start items-center border-r-2 shrink-0">
         <ul className="mt-3 flex flex-col gap-7">
           <Button title="Home" src={home_side} vertical={true} />
-          <Button title="Shorts" src={shorts_side} vertical={true} />
+          <Button
+            title="Shorts"
+            src={shorts_side}
+            vertical={true}
+            disabled={true}
+          />
           <Button
             title="Subscriptions"
             src={subscriptions_side}
             vertical={true}
+            disabled={true}
           />
-          <Button title="Music" src={music_side} vertical={true} />
+          <Button
+            title="Music"
+            src={music_side}
+            vertical={true}
+            disabled={true}
+          />
         </ul>
       </div>
     );
